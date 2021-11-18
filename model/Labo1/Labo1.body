@@ -1,0 +1,15 @@
+format: ChoreonoidBody
+formatVersion: 1.0
+angleUnit: degree
+name: Labo1
+rootLink: Root
+
+links:
+  -
+    name: Root
+    jointType: fixed
+  -
+    type: SubBody
+    uri: Labo1v2.body
+    parent: Root
+    rotation: [ 0, 0, 1, 180 ]

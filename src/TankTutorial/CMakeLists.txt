@@ -1,0 +1,12 @@
+# RttTankController
+choreonoid_add_simple_controller(RttTankController RttTankController.cpp)
+target_link_libraries(RttTankController ${roscpp_LIBRARIES})
+
+# RttJointStatePublisher
+choreonoid_add_simple_controller(RttJointStatePublisher RttJointStatePublisher.cpp)
+target_link_libraries(RttJointStatePublisher ${roscpp_LIBRARIES})
+
+# RttJointStateSubscriber
+## BodyItemクラスやcallLater関数を使用するため，CnoidBodyPluginライブラリが必要！
+choreonoid_add_simple_controller(RttJointStateSubscriber RttJointStateSubscriber.cpp)
+target_link_libraries(RttJointStateSubscriber ${roscpp_LIBRARIES} Choreonoid::CnoidBodyPlugin)

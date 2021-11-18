@@ -1,0 +1,7 @@
+<launch>
+    <node pkg="choreonoid_joy" name="choreonoid_joy" type="node"/>
+    <node pkg="choreonoid_ros" name="choreonoid" type="choreonoid"
+          args="$(find choreonoid_ros_practice)/project/TankTutorial/step2.cnoid --start-simulation"/>
+    <node pkg="choreonoid_ros" name="choreonoid2" type="choreonoid"
+          args="$(find choreonoid_ros_practice)/project/TankTutorial/step3.cnoid"/>
+</launch>
