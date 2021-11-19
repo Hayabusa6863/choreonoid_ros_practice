@@ -10,3 +10,11 @@ target_link_libraries(RttJointStatePublisher ${roscpp_LIBRARIES})
 ## BodyItemクラスやcallLater関数を使用するため，CnoidBodyPluginライブラリが必要！
 choreonoid_add_simple_controller(RttJointStateSubscriber RttJointStateSubscriber.cpp)
 target_link_libraries(RttJointStateSubscriber ${roscpp_LIBRARIES} Choreonoid::CnoidBodyPlugin)
+
+# RttImuStatePublisher
+choreonoid_add_simple_controller(RttImuStatePublisher RttImuStatePublisher.cpp)
+target_link_libraries(RttImuStatePublisher ${roscpp_LIBRARIES})
+
+# RttImuStateSubscriber
+choreonoid_add_simple_controller(RttImuStateSubscriber RttImuStateSubscriber.cpp)
+target_link_libraries(RttImuStateSubscriber ${roscpp_LIBRARIES} Choreonoid::CnoidBodyPlugin)

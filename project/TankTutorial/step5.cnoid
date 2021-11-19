@@ -6,130 +6,105 @@ items:
   children: 
     - 
       id: 1
-      name: "World"
+      name: "Tank"
       plugin: Body
-      class: WorldItem
+      class: BodyItem
+      is_checked: true
       data: 
-        collision_detection: false
-        collision_detector: AISTCollisionDetector
-        default_material_table_file: "${SHARE}/default/materials.yaml"
+        file: "../../model/Tank/Tank.body"
+        format: CHOREONOID-BODY
+        rootPosition: [ 0, 0, 0.106 ]
+        rootAttitude: [ 
+          1, 0, 0, 
+          0, 1, 0, 
+          0, 0, 1 ]
+        jointDisplacements: [ 0, 0, 0, 0 ]
+        jointPositions: [ 0, 0, 0, 0 ]
+        initialRootPosition: [ 0, 0, 0.106 ]
+        initialRootAttitude: [ 
+          1, 0, 0, 
+          0, 1, 0, 
+          0, 0, 1 ]
+        initialJointPositions: [ 0, 0, 0, 0 ]
+        staticModel: false
+        collisionDetection: true
+        selfCollisionDetection: false
+        location_editable: true
+        scene_sensitive: true
+        zmp: [ 0, 0, 0 ]
       children: 
         - 
           id: 2
-          name: "Tank"
+          name: "RttJointStateSubscriber"
           plugin: Body
-          class: BodyItem
-          is_checked: true
+          class: SimpleControllerItem
           data: 
-            file: "../../model/Tank/Tank.body"
-            format: CHOREONOID-BODY
-            rootPosition: [ -0.000273616503, -1.85085335e-05, 0.105850757 ]
-            rootAttitude: [ 
-              0.999999922, -7.99989967e-05, -0.0003875372, 
-              7.99989912e-05, 0.999999997, -2.9670469e-08, 
-              0.000387537201, -1.33211838e-09, 0.999999925 ]
-            jointDisplacements: [ 0.00988065, -59.9923, 0, 0 ]
-            initialJointDisplacements: [ 0, 0, 0, 0 ]
-            jointPositions: [ 0.00017245, -1.04706, 0, 0 ]
-            initialRootPosition: [ 0, 0, 0.106 ]
-            initialRootAttitude: [ 
-              1, 0, 0, 
-              0, 1, 0, 
-              0, 0, 1 ]
-            initialJointPositions: [ 0, 0, 0, 0 ]
-            staticModel: false
-            collisionDetection: true
-            selfCollisionDetection: false
-            location_editable: true
-            scene_sensitive: true
-            zmp: [ 0, 0, 0 ]
-          children: 
-            - 
-              id: 3
-              name: "RttTankController"
-              plugin: Body
-              class: SimpleControllerItem
-              data: 
-                isNoDelayMode: false
-                controllerOptions: ""
-                controller: "${HOME}/catkin_ws/build/choreonoid_ros_practice/lib/choreonoid-1.8/simplecontroller/RttTankController"
-                base_directory: "None"
-                reloading: false
-                export_symbols: false
-            - 
-              id: 4
-              name: "RttJointStatePublisher"
-              plugin: Body
-              class: SimpleControllerItem
-              is_selected: true
-              data: 
-                isNoDelayMode: false
-                controllerOptions: ""
-                controller: "${HOME}/ros1_ws/build/choreonoid_ros_practice/lib/choreonoid-1.8/simplecontroller/RttJointStatePublisher"
-                base_directory: "None"
-                reloading: false
-                export_symbols: false
-        - 
-          id: 5
-          name: "Labo1"
-          plugin: Body
-          class: BodyItem
-          is_checked: true
-          data: 
-            file: "../../model/Labo1/Labo1v2.body"
-            format: CHOREONOID-BODY
-            rootPosition: [ 0, 0, -0.1 ]
-            rootAttitude: [ 
-              1, 0, 0, 
-              0, 1, 0, 
-              0, 0, 1 ]
-            jointDisplacements: [ -4.07111e-16 ]
-            initialJointDisplacements: [ 0 ]
-            jointPositions: [ -7.10543e-18 ]
-            initialRootPosition: [ 0, 0, -0.1 ]
-            initialRootAttitude: [ 
-              1, 0, 0, 
-              0, 1, 0, 
-              0, 0, 1 ]
-            initialJointPositions: [ 0 ]
-            staticModel: false
-            collisionDetection: true
-            selfCollisionDetection: false
-            location_editable: true
-            scene_sensitive: true
-            zmp: [ 0, 0, 0 ]
-        - 
-          id: 6
-          name: "AISTSimulator"
-          plugin: Body
-          class: AISTSimulatorItem
-          data: 
-            timeStep: 0.001
-            realtimeSync: true
-            recording: "full"
-            timeRangeMode: "Unlimited"
-            timeLength: 180
-            active_control_time_range_mode: false
-            allLinkPositionOutputMode: false
-            deviceStateOutput: true
-            controllerThreads: true
-            recordCollisionData: false
+            isNoDelayMode: false
             controllerOptions: ""
-            scene_view_edit_mode_blocking: false
-            dynamicsMode: "Forward dynamics"
-            integrationMode: "Runge Kutta"
-            gravity: [ 0, 0, -9.80665 ]
-            min_friction_coefficient: 0
-            max_friction_coefficient: 100
-            cullingThresh: 0.005
-            contactCullingDepth: 0.05
-            errorCriterion: 0.001
-            maxNumIterations: 25
-            contactCorrectionDepth: 0.00025
-            contactCorrectionVelocityRatio: 5
-            kinematicWalking: false
-            2Dmode: false
-            oldAccelSensorMode: false
+            controller: "${HOME}/ros1_ws/build/choreonoid_ros_practice/lib/choreonoid-1.8/simplecontroller/RttJointStateSubscriber"
+            base_directory: "None"
+            reloading: false
+            export_symbols: false
+        - 
+          id: 3
+          name: "RttImuStateSubscriber"
+          plugin: Body
+          class: SimpleControllerItem
+          data: 
+            isNoDelayMode: false
+            controllerOptions: ""
+            controller: "${HOME}/ros1_ws/build/choreonoid_ros_practice/lib/choreonoid-1.8/simplecontroller/RttImuStateSubscriber"
+            base_directory: "None"
+            reloading: false
+            export_symbols: false
+        - 
+          id: 4
+          name: "SensorVisualizer"
+          plugin: Body
+          class: SensorVisualizerItem
+          data: 
+            sub_items: 
+              - 
+                class: AccelerationSensorVisualizerItem
+                name: AccelerationSensor
+                is_checked: true
+                ratio: 0.1
+                threshold: 0.05
+                offset: [ 0, 0, -9.8 ]
+              - 
+                class: RateGyroSensorVisualizerItem
+                name: RateGyro
+                is_selected: true
+                is_checked: true
+                ratio: 0.4
+                threshold: 0.01
+                offset: [ 0, 0, 0 ]
+              - 
+                class: CameraImageVisualizerItem
+                name: Kinect-Image
+              - 
+                class: CameraImageVisualizerItem
+                name: Theta
+              - 
+                class: PointCloudVisualizerItem
+                name: Kinect
+                translation: [ 0, 0, 0 ]
+                rotation: [ 1, 0, 0, 0 ]
+                angle_unit: degree
+                rendering_mode: Point
+                point_size: 0
+                voxel_size: 0.01
+                is_editable: false
+              - 
+                class: RangeSensorVisualizerItem
+                name: VLP-16
+                translation: [ 0, 0, 0 ]
+                rotation: [ 1, 0, 0, 0 ]
+                angle_unit: degree
+                rendering_mode: Point
+                point_size: 0
+                voxel_size: 0.01
+                is_editable: false
 views: 
   - 
     id: 0
@@ -142,7 +117,7 @@ views:
     class: ItemTreeView
     mounted: true
     state: 
-      expanded: [ 1, 2, 3, 5 ]
+      expanded: [ 1, 4 ]
   - 
     id: 2
     plugin: Base
@@ -206,9 +181,9 @@ views:
           fieldOfView: 0.610865
           near: 0.04
           far: 200
-          eye: [ -5.26315, 5.57523, 3.77657 ]
-          direction: [ 0.532032, -0.705641, -0.467988 ]
-          up: [ 0.281741, -0.373678, 0.883735 ]
+          eye: [ -1.48567, -1.54604, 1.3407 ]
+          direction: [ 0.637248, 0.649916, -0.414154 ]
+          up: [ 0.289955, 0.295719, 0.910207 ]
         - 
           camera: [ System, Orthographic ]
           orthoHeight: 20
@@ -270,7 +245,7 @@ toolbars:
     frameRate: 1000
     playbackFrameRate: 60
     idleLoopDrivenMode: false
-    currentTime: 8.164
+    currentTime: 0
     speedScale: 1
     syncToOngoingUpdates: true
     autoExpansion: true
@@ -323,17 +298,12 @@ Body:
   "BodyMotionEngine": 
     updateJointVelocities: false
   "BodySelectionManager": 
-    current_body_item: 2
+    current_body_item: 1
     current_link: "CHASSIS"
   "EditableSceneBody": 
     editableSceneBodies: 
       - 
-        bodyItem: 2
-        show_cm: false
-        show_cm_projection: false
-        show_zmp: false
-      - 
-        bodyItem: 5
+        bodyItem: 1
         show_cm: false
         show_cm_projection: false
         show_zmp: false
@@ -363,12 +333,12 @@ viewAreas:
         - 
           type: splitter
           orientation: horizontal
-          sizes: [ 238, 466 ]
+          sizes: [ 183, 521 ]
           children: 
             - 
               type: splitter
               orientation: vertical
-              sizes: [ 462, 462 ]
+              sizes: [ 449, 448 ]
               children: 
                 - 
                   type: pane
@@ -380,7 +350,7 @@ viewAreas:
             - 
               type: splitter
               orientation: vertical
-              sizes: [ 694, 230 ]
+              sizes: [ 673, 224 ]
               children: 
                 - 
                   type: pane
@@ -392,7 +362,7 @@ viewAreas:
         - 
           type: splitter
           orientation: vertical
-          sizes: [ 203, 721 ]
+          sizes: [ 198, 699 ]
           children: 
             - 
               type: pane
@@ -400,7 +370,7 @@ viewAreas:
             - 
               type: splitter
               orientation: vertical
-              sizes: [ 287, 430 ]
+              sizes: [ 286, 409 ]
               children: 
                 - 
                   type: pane
